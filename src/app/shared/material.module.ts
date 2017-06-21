@@ -3,19 +3,25 @@ import { NgModule } from '@angular/core';
 import {
     MdButtonModule,
     MdCheckboxModule,
-    MdInputModule
+    MdInputModule,
+    MdToolbarModule,
+    MdIconModule
 } from '@angular/material';
 
 @NgModule({
     imports: [
         MdButtonModule,
         MdCheckboxModule,
-        MdInputModule
+        MdInputModule,
+        MdToolbarModule,
+        MdIconModule
     ],
     exports: [
         MdButtonModule,
         MdCheckboxModule,
-        MdInputModule
+        MdInputModule,
+        MdToolbarModule,
+        MdIconModule
     ],
     declarations: [],
     providers: [],

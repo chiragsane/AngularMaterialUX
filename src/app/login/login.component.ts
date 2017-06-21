@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['home']);
     }
   }
+  newUser() {
+    alert('Hello New User');
+  }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(2)]],
