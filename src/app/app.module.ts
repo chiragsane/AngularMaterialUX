@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { AppRoutingModule } from './app.routing';
 
@@ -19,10 +20,11 @@ import { UserService } from './shared/user.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
+    HttpModule,
     ReactiveFormsModule,
-    MaterialModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    AppRoutingModule
   ],
   providers: [
     AuthGuard,

@@ -1,13 +1,13 @@
 <div id="LoginWrapper">
     <div id="loginForm">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
             <md-input-container>
                 <input mdInput placeholder="Username" autocomplete="off" formControlName="username">
             </md-input-container>
             <md-input-container>
                 <input mdInput placeholder="Password" type="password" formControlName="password">
             </md-input-container>
-            <button md-raised-button type="submit" color="primary" [disabled]="loginForm.invalid" (click)="onSubmit(loginForm)">Log In</button>
+            <button md-raised-button type="submit" color="primary" [disabled]="loginForm.invalid">Log In</button>
         </form>
         <br>
         <button md-raised-button (click)="newUser()">New User?</button>
