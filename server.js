@@ -12,6 +12,7 @@ app.get('/api', function(req, res) {
     res.json({ message: 'API connected sucessfully!' });
 });
 app.use('/api/users', require('./routes/users'));
+app.use('/api/authenticate', require('./routes/authenticate'));
 
 var port = process.env.PORT || 8080;
 
