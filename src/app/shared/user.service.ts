@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 export class UserService {
     URL = 'http://10.103.21.186:8080';
     User = {
-        exists: false
+        exists: true
     };
     constructor(private http: Http, private router: Router) { }
 
