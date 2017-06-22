@@ -15,7 +15,7 @@ router.route('/')
                 res.send(err)
             if (user)
                 if (user.password === req.body.password)
-                    res.json({ message: 'User valid!' });
+                    res.json(user)
                 else
                     res.json({ message: 'User invalid!' });
             if (!user)

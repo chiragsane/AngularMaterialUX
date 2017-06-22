@@ -6,7 +6,11 @@ import { Router } from '@angular/router';
 export class UserService {
     URL = 'http://10.103.21.186:8080';
     User = {
-        exists: true
+        exists: false,
+        _id: '',
+        name: '',
+        username: '',
+        password: ''
     };
     constructor(private http: Http, private router: Router) { }
 
@@ -15,11 +19,15 @@ export class UserService {
             .map(res => res.json())
             .subscribe(
             res => {
-                if (res.message === 'User valid!') {
-                    this.User.exists = true;
-                    this.router.navigate(['home']);
-                } else {
+                if (res.message) {
+                    console.log(res.message);
                     this.User.exists = false;
+                } else {
+                    this.User.exists = true;
+                    this.User = res;
+                    this.User.exists = true;
+                    console.log(this.User);
+                    this.router.navigate(['home']);
                 }
             })
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-declare var $: any;
+import { ToastService } from '../shared/toast.service';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +8,12 @@ declare var $: any;
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  toastMessage: String = '';
 
-  constructor() { }
+  constructor(private toastService: ToastService, private userService: UserService) { }
 
   ngOnInit() {
-    this.toast();
-  }
-  toast() {
-    setTimeout(function () {
-      $('#Snackbar').addClass('visible');
-      setTimeout(function () {
-        $('#Snackbar').addClass('dismiss');
-      }, 3000);
-    }, 50);
+    this.toastService.toast();
+    this.toastMessage = `Welcome ${this.userService.User.name}`;
   }
 }
