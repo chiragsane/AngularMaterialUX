@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { UserService } from '../shared/user.service';
 
@@ -12,16 +11,14 @@ import { UserService } from '../shared/user.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
   onSubmit(loginForm) {
-    if (this.userService.checkUser(loginForm.value.username, loginForm.value.password)) {
-      this.router.navigate(['home']);
-    }
+    this.userService.checkUser(loginForm.value);
   }
   newUser() {
     this.loginForm = this.formBuilder.group({
-      username: ['admin', [Validators.required, Validators.minLength(2)]],
-      password: ['admin', [Validators.required, Validators.minLength(2)]]
+      username: ['moduser', [Validators.required, Validators.minLength(2)]],
+      password: ['moduser', [Validators.required, Validators.minLength(2)]]
     })
   }
   ngOnInit() {
