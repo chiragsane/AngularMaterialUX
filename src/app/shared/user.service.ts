@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
@@ -12,23 +11,20 @@ export class UserService {
         username: '',
         password: ''
     };
-    constructor(private http: Http, private router: Router) { }
+    constructor(private http: Http) { }
 
     checkUser(user) {
-        this.http.post(`${this.URL}/api/authenticate`, user)
-            .map(res => res.json())
-            .subscribe(
-            res => {
-                if (res.message) {
-                    console.log(res.message);
+        return this.http.post(`${this.URL}/api/authenticate`, user)
+            .map(res => {
+                const resJson = res.json();
+                if (resJson['message']) {
+                    console.log(resJson['message']);
                     this.User.exists = false;
                 } else {
+                    this.User = resJson;
                     this.User.exists = true;
-                    this.User = res;
-                    this.User.exists = true;
-                    console.log(this.User);
-                    this.router.navigate(['home']);
                 }
+                return resJson;
             })
     }
 }

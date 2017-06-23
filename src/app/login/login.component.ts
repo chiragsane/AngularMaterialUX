@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { UserService } from '../shared/user.service';
 
@@ -11,9 +12,16 @@ import { UserService } from '../shared/user.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
   onSubmit(loginForm) {
-    this.userService.checkUser(loginForm.value);
+    this.userService.checkUser(loginForm.value)
+      .subscribe(
+      res => {
+        this.router.navigate(['home']);
+      },
+      err => {
+        console.log(err);
+      })
   }
   newUser() {
     this.loginForm = this.formBuilder.group({
