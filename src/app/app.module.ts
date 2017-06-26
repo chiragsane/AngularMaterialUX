@@ -12,7 +12,6 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from './shared/auth.guard';
 import { UserService } from './shared/user.service';
-import { ToastService } from './shared/toast.service';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { ToastService } from './shared/toast.service';
   ],
   providers: [
     AuthGuard,
-    UserService,
-    ToastService
+    UserService
   ],
   bootstrap: [AppComponent]
 })

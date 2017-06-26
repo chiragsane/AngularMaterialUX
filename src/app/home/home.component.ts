@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from '../shared/toast.service';
 import { UserService } from '../shared/user.service';
 
 @Component({
@@ -8,12 +7,9 @@ import { UserService } from '../shared/user.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  toastMessage: String = '';
 
-  constructor(private toastService: ToastService, private userService: UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.toastService.toast();
-    this.toastMessage = `Welcome ${this.userService.User.name}`;
   }
 }

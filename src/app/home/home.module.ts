@@ -5,7 +5,6 @@ import { MaterialModule } from '../shared/material.module';
 
 import { HomeRoutingModule } from './home.routing';
 import { HomeComponent } from './home.component';
-import { ToastComponent } from '../toast/toast.component';
 
 @NgModule({
   imports: [
@@ -14,8 +13,7 @@ import { ToastComponent } from '../toast/toast.component';
     MaterialModule
   ],
   declarations: [
-    HomeComponent,
-    ToastComponent
+    HomeComponent
     ]
 })
 export class HomeModule { }
