@@ -1,15 +1,34 @@
 <div id="LoginWrapper">
-    <div id="loginForm">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+    <div id="signinForm">
+        <form [formGroup]="signinForm" (ngSubmit)="onSignin(signinForm)">
             <md-input-container>
                 <input mdInput placeholder="Username" autocomplete="off" formControlName="username">
             </md-input-container>
             <md-input-container>
                 <input mdInput placeholder="Password" type="password" formControlName="password">
             </md-input-container>
-            <button md-raised-button type="submit" color="primary" [disabled]="loginForm.invalid">Log In</button>
+            <button md-raised-button type="submit" color="primary" [disabled]="signinForm.invalid">Log In</button>
         </form>
         <br>
         <button md-raised-button (click)="newUser()">New User?</button>
+    </div>
+    <div id="signupForm">
+        <form [formGroup]="signupForm" (ngSubmit)="onSignup(signupForm)">
+            <md-input-container>
+                <input mdInput placeholder="Name" autocomplete="off" formControlName="name">
+            </md-input-container>
+            <md-input-container>
+                <input mdInput placeholder="Username" autocomplete="off" formControlName="username">
+            </md-input-container>
+            <md-input-container>
+                <input mdInput placeholder="Password" type="password" formControlName="password">
+            </md-input-container>
+            <md-input-container>
+                <input mdInput placeholder="Re-enter Password" type="password" formControlName="confirm_password">
+            </md-input-container>
+            <button md-raised-button type="submit" color="primary" [disabled]="signupForm.invalid">Sign Up</button>
+        </form>
+        <br>
+        <button md-raised-button (click)="existingUser()">Already a User?</button>
     </div>
 </div>
