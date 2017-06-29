@@ -6,7 +6,7 @@ import { NotificationsService } from 'angular2-notifications';
 export class UserService {
     URL = 'http://10.103.21.186:8080';
     User = {
-        exists: false,
+        exists: true,
         _id: '',
         name: '',
         username: '',
@@ -43,6 +43,25 @@ export class UserService {
             },
             err => {
                 console.log(err);
+            })
+    }
+    getUsers() {
+        return this.http.get(`${this.URL}/api/users`)
+            .map(res => {
+                const resJson = res.json();
+                return resJson;
+            },
+            err => {
+                console.log(err);
+            })
+    }
+    deleteUser(user_id) {
+        return this.http.delete(`${this.URL}/api/users/${user_id}`)
+            .map(res => {
+                const resJson = res.json();
+                const reply = resJson['reply'];
+                this._service.success('Sucess', `${reply}`, { timeOut: 5000, showProgressBar: false });
+                return resJson;
             })
     }
 }

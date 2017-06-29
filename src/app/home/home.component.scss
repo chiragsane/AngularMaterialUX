@@ -5,3 +5,48 @@ md-toolbar {
 .toolbar-filler {
     flex: 1 1 auto;
 }
+
+#HomeContent {
+    #UsersTableWrapper {
+        margin: 16px;
+        table#UsersTable {
+            min-width: 100%;
+            table-layout: fixed;
+            text-align: left;
+            border-spacing: 0px;
+            background: white;
+            padding: 16px;
+            box-shadow: 0px 10px 10px -10px;
+            thead {
+                tr {
+                    td {
+                        height: 30px;
+                        border-bottom: 1px solid black;
+                        font-size: larger;
+                        &:last-child {
+                            text-align: right;
+                            width: 100px;
+                        }
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    &:hover {
+                        background: rgba(0, 0, 0, 0.03);
+                    }
+                    td {
+                        height: 25px;
+                        md-icon {
+                            cursor: pointer;
+                        }
+                        &:last-child {
+                            text-align: right;
+                            width: 100px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

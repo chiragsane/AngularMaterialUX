@@ -3,4 +3,27 @@
     <span class="toolbar-filler"></span>
     <button md-raised-button color="accent" [routerLink]="['/login']">Log Out</button>
 </md-toolbar>
-<div id="HomeContent">This is the Content</div>
+<div id="HomeContent">
+    <div id="UsersTableWrapper">
+        <table id="UsersTable">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Username</td>
+                    <td>Password</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of Users">
+                    <td>{{user.name}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.password}}</td>
+                    <td>
+                        <md-icon (click)="deleteUser(user._id)">delete</md-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
