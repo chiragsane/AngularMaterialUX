@@ -30,17 +30,19 @@ export class LoginComponent implements OnInit {
     this.userService.addUser(signupForm.value)
       .subscribe(
       res => {
-        this.router.navigate(['home']);
+        this.existingUser();
       },
       err => {
         console.log(err);
       })
   }
   newUser() {
+    this.signupForm.reset();
     $('#signinForm').removeClass('visible');
     $('#signupForm').addClass('visible');
   }
   existingUser() {
+    this.signinForm.reset();
     $('#signupForm').removeClass('visible');
     $('#signinForm').addClass('visible');
   }
