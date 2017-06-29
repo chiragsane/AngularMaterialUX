@@ -24,7 +24,7 @@ router.route('/')
         user.save(function(err) {
             if (err)
                 res.send(err);
-            res.json({ message: 'User created!' });
+            res.json({ reply: 'User created!' });
         });
     });
 
@@ -46,7 +46,7 @@ router.route('/:user_id')
             user.save(function(err) {
                 if (err)
                     res.send(err);
-                res.json({ message: 'User updated!' });
+                res.json({ reply: 'User updated!' });
             });
         });
     })
@@ -56,7 +56,7 @@ router.route('/:user_id')
         }, function(err, user) {
             if (err)
                 res.send(err);
-            res.json({ message: 'Successfully deleted' });
+            res.json({ reply: 'Successfully deleted' });
         });
     });
 

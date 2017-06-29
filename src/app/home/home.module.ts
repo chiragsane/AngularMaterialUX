@@ -12,6 +12,8 @@ import { HomeComponent } from './home.component';
     HomeRoutingModule,
     MaterialModule
   ],
-  declarations: [HomeComponent]
+  declarations: [
+    HomeComponent
+    ]
 })
 export class HomeModule { }

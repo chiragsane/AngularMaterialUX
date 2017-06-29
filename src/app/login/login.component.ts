@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { UserService } from '../shared/user.service';
+
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +12,48 @@ import { UserService } from '../shared/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  signinForm: FormGroup;
+  signupForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
-  onSubmit(loginForm) {
-    this.userService.checkUser(loginForm.value);
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  onSignin(signinForm) {
+    this.userService.checkUser(signinForm.value)
+      .subscribe(
+      res => {
+        this.router.navigate(['home']);
+      },
+      err => {
+        console.log(err);
+      })
+  }
+  onSignup(signupForm) {
+    this.userService.addUser(signupForm.value)
+      .subscribe(
+      res => {
+        this.router.navigate(['home']);
+      },
+      err => {
+        console.log(err);
+      })
   }
   newUser() {
-    this.loginForm = this.formBuilder.group({
-      username: ['moduser', [Validators.required, Validators.minLength(2)]],
-      password: ['moduser', [Validators.required, Validators.minLength(2)]]
-    })
+    $('#signinForm').removeClass('visible');
+    $('#signupForm').addClass('visible');
+  }
+  existingUser() {
+    $('#signupForm').removeClass('visible');
+    $('#signinForm').addClass('visible');
   }
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+    this.signinForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(2)]],
       password: ['', [Validators.required, Validators.minLength(2)]]
     })
+    this.signupForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      username: ['', [Validators.required, Validators.minLength(2)]],
+      password: ['', [Validators.required, Validators.minLength(2)]],
+      confirm_password: ['', [Validators.required, Validators.minLength(2)]]
+    })
   }
-
 }
