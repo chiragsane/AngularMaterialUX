@@ -18,9 +18,9 @@ export class UserService {
         return this.http.post(`${this.URL}/api/authenticate`, user)
             .map(res => {
                 const resJson = res.json();
-                if (resJson['message']) {
-                    const message = resJson['message'];
-                    this._service.error('Error', `${message}`, { timeOut: 5000, showProgressBar: false });
+                if (resJson.reply) {
+                    const reply = resJson.reply;
+                    this._service.error('Error', `${reply}`, { timeOut: 5000, showProgressBar: false });
                     this.User.exists = false;
                 } else {
                     this.User = resJson;
@@ -37,9 +37,8 @@ export class UserService {
         return this.http.post(`${this.URL}/api/users`, user)
             .map(res => {
                 const resJson = res.json();
-                const message = resJson['message'];
-                this._service.success('Success', `${message}`, { timeOut: 5000, showProgressBar: false });
-                this.User.exists = false;
+                const reply = resJson['reply'];
+                this._service.success('Success', `${reply}`, { timeOut: 5000, showProgressBar: false });
                 return resJson;
             },
             err => {

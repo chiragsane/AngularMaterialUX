@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { UserService } from '../shared/user.service';
 
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,10 +37,12 @@ export class LoginComponent implements OnInit {
       })
   }
   newUser() {
-    alert('new user');
+    $('#signinForm').removeClass('visible');
+    $('#signupForm').addClass('visible');
   }
   existingUser() {
-    alert('existing user');
+    $('#signupForm').removeClass('visible');
+    $('#signinForm').addClass('visible');
   }
   ngOnInit() {
     this.signinForm = this.formBuilder.group({

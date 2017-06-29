@@ -17,9 +17,9 @@ router.route('/')
                 if (user.password === req.body.password)
                     res.json(user)
                 else
-                    res.json({ message: 'User invalid!' });
+                    res.json({ reply: 'User invalid!' });
             if (!user)
-                res.json({ message: 'User not found!' });
+                res.json({ reply: 'User not found!' });
         })
     })
 
