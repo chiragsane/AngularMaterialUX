@@ -3,14 +3,14 @@ var router = express.Router();
 
 var User = require('../models/user');
 
-router.use(function(req, res, next) {
+router.use((req, res, next) => {
     console.log('Someone hit api/authenticate');
     next();
 });
 
 router.route('/')
-    .post(function(req, res) {
-        User.getUserByName(req.body.username, function(err, user) {
+    .post((req, res) => {
+        User.getUserByName(req.body.username, (err, user) => {
             if (err)
                 res.send(err)
             if (user)

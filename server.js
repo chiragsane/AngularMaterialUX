@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/api', function(req, res) {
+app.get('/api', (req, res) => {
     res.json({ message: 'API connected sucessfully!' });
 });
 app.use('/api/users', require('./routes/users'));

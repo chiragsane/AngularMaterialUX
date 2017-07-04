@@ -17,24 +17,18 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
   onSignin(signinForm) {
-    this.userService.checkUser(signinForm.value)
-      .subscribe(
-      res => {
-        this.router.navigate(['home']);
-      },
-      err => {
-        console.log(err);
-      })
+    this.userService.checkUser(signinForm.value).subscribe(res => {
+      this.router.navigate(['home']);
+    }, err => {
+      console.log(err);
+    })
   }
   onSignup(signupForm) {
-    this.userService.addUser(signupForm.value)
-      .subscribe(
-      res => {
-        this.existingUser();
-      },
-      err => {
-        console.log(err);
-      })
+    this.userService.addUser(signupForm.value).subscribe(res => {
+      this.existingUser();
+    }, err => {
+      console.log(err);
+    })
   }
   newUser() {
     this.signupForm.reset();

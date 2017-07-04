@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import {
     MdButtonModule,
     MdCheckboxModule,
@@ -24,6 +23,6 @@ import {
         MdIconModule
     ],
     declarations: [],
-    providers: [],
+    providers: []
 })
 export class MaterialModule { }
