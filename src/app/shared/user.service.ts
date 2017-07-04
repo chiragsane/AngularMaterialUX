@@ -20,18 +20,24 @@ export class UserService {
                 const resJson = res.json();
                 if (resJson.reply) {
                     const reply = resJson.reply;
-                    this._service.error('Error', `${reply}`, { timeOut: 5000, showProgressBar: false });
+                    this._service.error(`${reply}`, 'Error', { timeOut: 5000, showProgressBar: false });
                     this.User.exists = false;
                 } else {
                     this.User = resJson;
                     this.User.exists = true;
-                    this._service.success('Welcome', `${this.User.name}`, { timeOut: 5000, showProgressBar: false });
+                    this._service.success(`Welcome ${this.User.name}`, 'Logged In', { timeOut: 5000, showProgressBar: false });
                 }
                 return resJson;
             },
             err => {
                 console.log(err);
             })
+    }
+    locateUser(latitude, longitude) {
+        this.http.get(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}`)
+        .map(res => {
+            console.log(res)
+        })
     }
     addUser(user) {
         return this.http.post(`${this.URL}/api/users`, user)

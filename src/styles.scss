@@ -19,3 +19,18 @@ body {
 app-root {
     width: 100%;
 }
+
+.simple-notification-wrapper.bottom {
+    bottom: 16px !important;
+}
+
+.simple-notification-wrapper.right {
+    right: 16px !important;
+}
+
+.simple-notification {
+    margin: 10px 0px 0px !important;
+    &.success {
+        background: #4CAF50 !important;
+    }
+}

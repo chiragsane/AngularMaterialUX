@@ -36,9 +36,11 @@ md-toolbar {
                         background: rgba(0, 0, 0, 0.03);
                     }
                     td {
-                        height: 25px;
+                        height: 30px;
+                        border-bottom: 1px solid #d9d9d9;
                         md-icon {
                             cursor: pointer;
+                            vertical-align: -webkit-baseline-middle;
                         }
                         &:last-child {
                             text-align: right;
